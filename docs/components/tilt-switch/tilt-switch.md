@@ -14,7 +14,7 @@ Detects if it has been tilted beyond a certain point.
 
 ---
 
-## Basic tilt switch example
+## Basic Usage
 ```python
 # --- Imports
 import digitalio

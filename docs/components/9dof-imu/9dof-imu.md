@@ -15,7 +15,7 @@ A sensor that combines **accelerometer, gyroscope, and magnetometer** in one pac
 
 ---
 
-## **Background**
+## Background
 
 The [Adafruit ICM-20948 9-DoF IMU Sensor Board](https://learn.adafruit.com/adafruit-tdk-invensense-icm-20948-9-dof-imu) features a  **9DoF** (9-degree-of-freedom) sensor made by TDK InvenSense. This **IMU** (inertial measurement unit) integrates:
 

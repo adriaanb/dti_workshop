@@ -23,7 +23,7 @@ The servo motor in the kit is a standard servo motor for hobby applications, mea
 A pulse-width modulated (PWM) signal is used to control its angle. By adjusting the length of the pulse width, you can control the position of the servo motor's shaft.
 
 {:.highlight-yellow}
-To learn more about PWM signals, refer to the [Piezo Buzzer](../piezo-buzzer/piezo-buzzer#define-a-tone-using-pulse-width-modulation-pwm) example. 
+To learn more about PWM signals, refer to the [Piezo Buzzer](../piezo-buzzer/piezo-buzzer#basic-usage) example. 
 
 ## Basic Usage
 

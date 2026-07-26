@@ -18,7 +18,7 @@ You can also use it as a  <a href="../../glossary/glossary"><img src="../../glos
 
 ---
 
-## Basic photo resistor example
+## Basic Usage
 ```python
 # --- Imports
 import time

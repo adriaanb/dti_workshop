@@ -198,6 +198,3 @@ When your sorter has been assembled, set it aside for Step 3, where we will conn
 ---
 
 *This page and materials are adapted for the Summer School DTI 2025 based on the original assembly guides and resources by Google’s Tiny Sorter project. Videos embedded here remain the property of Google Experiments.*
-
-
-

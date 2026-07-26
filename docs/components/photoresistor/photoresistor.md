@@ -14,7 +14,7 @@ Changes its electrical resistance in response to light intensity. Can be used to
 
 ---
 
-## Basic photo resistor example
+## Basic Usage
 ```python
 # --- Imports
 import time
@@ -36,7 +36,7 @@ while True:
     time.sleep(0.05)  # Make the loop run a little bit slower
 ```
 
-## Photo resistor example with conversion to voltage 
+## Advanced Usage: Conversion to Voltage 
 ```python
 # --- Imports
 import time

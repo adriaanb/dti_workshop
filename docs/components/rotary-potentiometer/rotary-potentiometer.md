@@ -43,7 +43,7 @@ while True:
     time.sleep(0.05)  # Make the loop run a little bit slower
 ```
 
-## Rotation potentiometer example with conversion to voltage 
+## Advanced Usage: Conversion to Voltage 
 ```python
 # --- Imports
 import time
@@ -71,7 +71,7 @@ while True:
     time.sleep(0.05)  # Make the loop run a little bit slower
 ```
 
-## Rotation potentiometer example with angle mapping
+## Advanced Usage: Angle Mapping
 ```python
 # --- Imports
 import time
