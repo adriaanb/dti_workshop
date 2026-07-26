@@ -7,3 +7,53 @@
 .multi-graphic-justify:last-child {
   margin-top: 12px;
 }
+
+// disable footer on desktop
+@include mq(md) {
+  #main-content > hr,
+  #main-content > footer {
+    display: none;
+  }
+}
+
+// bring back tint similar to v0.10.2 and earlier
+$callout-tints: (
+  "highlight": #41d693,
+  "highlight-yellow": #ffeb82,
+  "important": #2c84fa,
+  "new": #41d693,
+  "note": #41d693,
+  "note-purple": #7253ed,
+  "warning": #f77e7e
+);
+
+@each $name, $color in $callout-tints {
+  p.#{$name},
+  blockquote.#{$name},
+  p.#{$name}-title,
+  blockquote.#{$name}-title {
+    background: rgba($color, 0.1);
+  }
+}
+
+div.highlighter-rouge div.highlight {
+  border-color: rgba(#5c5962, 0.25);
+}
+
+// syntax palette restoring an appearance closer to v0.10.2 and earlier with improved accessibility
+.highlight {
+  .c, .cm, .cp, .c1, .cs, .ch, .cpf { color: #707178; font-style: italic; }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: #a625a4; }
+  .l, .ld, .s, .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .s1, .dl, .sa { color: #3f7f3f; }
+  .n, .o, .p, .nf, .nn, .nx, .pm { color: #383942; }
+  .m, .na, .mf, .mh, .mi, .mo, .il, .mb { color: #a66000; }
+  .nb, .nc, .no, .nd, .ni, .ne, .nl, .py, .nv, .bp, .vc, .vg, .fm, .vm { color: #a56101; }
+  .nt, .vi { color: #d72f21; }
+  .sr, .ss { color: #0079ac; }
+  .gu, .gh { color: #75715e; }
+  .gd, .gr { color: #d92a2a; }
+  .gi { color: #208150; }
+  .gs, .ow { font-weight: 700; }
+  .ge { font-style: italic; }
+  .err { color: #fff; background-color: #e05151; }
+}

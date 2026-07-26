@@ -1,7 +1,7 @@
-remote_theme: just-the-docs/just-the-docs
+theme: just-the-docs
 
 title: Microcontroller Workshop DTI '25
-color_scheme: summer-school
+color_scheme: light
 
 callouts_level: quiet
 callouts:
@@ -34,3 +34,7 @@ nav_external_links:
 
 plugins:
   - jekyll-redirect-from
+
+sass:
+  quiet_deps: true
+  silence_deprecations: ["import"]
