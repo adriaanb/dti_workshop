@@ -5,101 +5,217 @@ parent: "Inspiration"
 nav_order: 4
 redirect_from:
   - "/part 2 get creative/idea-4.html"
+  - "/part 1 tutorials/connecting-to-the-internet/part-4.html"
+  - "/tutorials/connecting-to-the-internet/part-4.html"
 ---
 
-# Idea 4 – Energy Production with Water/Wind (Simulation)
+# Energy Production
 
-This project is a thought-starter, not a fully guided tutorial. The goal is to get creative with a new component: the **Mini Fan (DC Motor)** and explore how we can simulate concepts like renewable energy.
+How much renewable energy is being produced around you right now? While you cannot see directly what is currently coming out of your outlet, information about the weather that drives renewable energy is publicly available.
 
-While we won't actually generate electricity, we can build a model that represents a wind or water turbine. This is a great way to practice connecting inputs to outputs in a meaningful and creative way!
+This project fetches live weather data for your location and turns it into something you can see on your desk. Start with the working example, then explore one of the directions suggested below.
 
----
+{: .note }
+This example needs a working WiFi connection. If you have not set that up yet, work through [Connecting To The Internet](../tutorials/connecting-to-the-internet/) first.
 
-## The Concept
+## Basic Example: Fetching Live Weather
 
-The core of this idea is to use the **Mini Fan** to represent a turbine.
-- When the fan spins, it simulates the production of energy.
-- The faster the fan spins, the more "energy" is being generated.
+We use [open-meteo.com](https://open-meteo.com), which is free and does not need an API key. Its documentation can be found here: [Open Meteo Docs](https://open-meteo.com/en/docs).
 
-The challenge is to decide *what* controls the fan's speed. You can connect other sensors to your Pico to create a simple, interactive simulation.
-
----
-
-## Main Component
-
-The key component for this project is the **Mini Fan (DC Motor)**. It's a simple motor that can be controlled using a PWM (Pulse-Width Modulation) signal from the Raspberry Pi Pico, which allows you to precisely set its rotation speed.
-
-- You can find all the details on how to connect and control it on the [**Mini Fan component page**](https://adriaanb.github.io/dti_workshop/components/mini-fan/mini-fan).
-
----
-
-## How to Get Started: Some Ideas
-
-This is an open-ended challenge! Here are a few starting points to spark your imagination:
-
-- **Build a Wind Turbine:** Create a simple cardboard structure for your fan. How can you control its speed? Maybe a **Rotary Angle Sensor** acts as a dial to control the "wind speed."
-- **Simulate a Hydro Dam:** Use a **Button** to "open the floodgates," making the fan spin at full speed for a few seconds.
-- **Create an "intelligent" System:** Connect a **Light Sensor**. The turbine could automatically spin faster during the "day" (when there's more light) and slower at "night."
-- **Visualize the Output:** Use the **NeoPixel LED strip** to show how much "energy" is being produced. The more LEDs that light up, the faster the fan is spinning.
-
----
-
-## Example Code Snippet
-
-This project has no final code, but here is a simple snippet to get you started. This code will make the fan spin at 50% speed for 5 seconds. You can find more details on the [component page](https://adriaanb.github.io/dti_workshop/components/mini-fan/mini-fan).
-
-Remember to save your final script as `code.py`!
+This version lights three LEDs to show the weather now, in one hour, and in two hours.
 
 ```python
 # --- Imports
 import time
 import board
-import pwmio
+import wifi
+import socketpool
+import ssl
+import adafruit_requests
+import neopixel
+
+# Get WiFi details from your secrets.py file
+from secrets import secrets
 
 # --- Variables
-# Set up a PWM output on a pin (e.g., GP13 - check your Grove shield!)
-# The frequency can be between 1000-20000 Hz for this motor
-fan_pwm = pwmio.PWMOut(board.GP13, frequency=5000, duty_cycle=0)
+latitude = 51.9607  # Latitude for Münster
+longitude = 7.6261  # Longitude for Münster
 
-# --- Functions
-# (You can add your own functions here!)
+# Open-Meteo API URL to fetch hourly forecasts for temperature, precipitation, and cloud cover
+weather_url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,precipitation,cloudcover&timezone=Europe/Berlin"
+
+pixel_pin = board.GP18
+num_pixels = 3
+pixels = neopixel.NeoPixel(pixel_pin, num_pixels, auto_write=False, pixel_order=neopixel.GRB)
 
 # --- Setup
-print("Starting fan simulation...")
-# Set the fan speed to 50%. Duty cycle is a value from 0 (off) to 65535 (full speed)
-speed = 0.5
-fan_pwm.duty_cycle = int(speed * 65535)
+
+# Connect to WiFi using credentials from the secrets file
+wifi.radio.connect(secrets["ssid"], secrets["password"])
+
+# Set up socket pool and requests
+pool = socketpool.SocketPool(wifi.radio)
+requests = adafruit_requests.Session(pool, ssl.create_default_context())
+
+# --- Functions
+def get_weather():
+    response = requests.get(weather_url)
+    weather_data = response.json()
+    response.close()
+    return weather_data
+
+def update_leds(weather_conditions):
+    # Turn off all LEDs first
+    pixels.fill((0, 0, 0))
+
+    # Define the colors
+    colors = {
+        "clear": (255, 255, 0),  # Sun - Yellow
+        "rain": (0, 0, 255),  # Rain - Blue
+        "cloud": (255, 255, 255),  # Clouds - White
+    }
+
+    # Update LEDs based on weather conditions
+    for i, condition in enumerate(weather_conditions):
+        if condition["cloudcover"] < 20 and condition["precipitation"] == 0:
+            pixels[i] = colors["clear"]
+            print(f"LED {i} on: Sun detected")
+        elif condition["precipitation"] > 0:
+            pixels[i] = colors["rain"]
+            print(f"LED {i} on: Rain detected")
+        elif condition["cloudcover"] >= 20:
+            pixels[i] = colors["cloud"]
+            print(f"LED {i} on: Clouds detected")
+
+    # Ensure the changes are sent to the NeoPixel strip
+    pixels.show()
 
 # --- Main loop
-# Let it run for 5 seconds, then stop
-time.sleep(5)
-fan_pwm.duty_cycle = 0 # Stop the fan
-print("Simulation finished.")
-
 while True:
-    # This is where you could add your own logic, e.g., reading a sensor
-    # to control the fan speed in real-time.
-    pass
+    weather_data = get_weather()
+
+    # Current weather condition and temperature
+    current_temp = weather_data['hourly']['temperature_2m'][0]
+    current_condition = {
+        "cloudcover": weather_data['hourly']['cloudcover'][0],
+        "precipitation": weather_data['hourly']['precipitation'][0],
+    }
+    print(f"Current temperature: {current_temp}°C")
+
+    # Forecast for 1 hour ahead
+    weather_1hr = {
+        "cloudcover": weather_data['hourly']['cloudcover'][1],
+        "precipitation": weather_data['hourly']['precipitation'][1],
+    }
+
+    # Forecast for 2 hours ahead
+    weather_2hr = {
+        "cloudcover": weather_data['hourly']['cloudcover'][2],
+        "precipitation": weather_data['hourly']['precipitation'][2],
+    }
+
+    # Update LEDs with current weather and forecasts
+    update_leds([current_condition, weather_1hr, weather_2hr])
+
+    time.sleep(120)  # Wait for 2 minutes before fetching the weather again
 ```
 
 ---
 
-Have fun bringing your ideas to life and simulating your own power plant!
+## Idea 1: A Solar Output Indicator
+
+Solar panels produce a lot of electricity when the sky is clear, yet very little when it is cloudy. Cloud cover data is already part of the example above, so the same request can drive a simple indicator.
+
+The LEDs fade from **red** (overcast, little solar energy) through amber to **green** (clear skies, panels producing lots of energy).
+
+```python
+# --- Imports
+import time
+import board
+import wifi
+import socketpool
+import ssl
+import adafruit_requests
+import neopixel
+
+from secrets import secrets
+
+# --- Variables
+latitude = 51.9607
+longitude = 7.6261
+
+weather_url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=cloudcover&timezone=Europe/Berlin"
+
+pixel_pin = board.GP18
+num_pixels = 3
+pixels = neopixel.NeoPixel(pixel_pin, num_pixels, auto_write=False, pixel_order=neopixel.GRB)
+
+# --- Setup
+wifi.radio.connect(secrets["ssid"], secrets["password"])
+
+pool = socketpool.SocketPool(wifi.radio)
+requests = adafruit_requests.Session(pool, ssl.create_default_context())
+
+# --- Functions
+def get_cloudcover():
+    response = requests.get(weather_url)
+    data = response.json()
+    response.close()
+    return data["hourly"]["cloudcover"][0]
+
+def solar_output(cloudcover):
+    # Clear sky counts as full output, fully overcast as almost none
+    return (100 - cloudcover) / 100
+
+def show_output(level):
+    red = int(255 * (1 - level))
+    green = int(255 * level)
+    pixels.fill((red, green, 0))
+    pixels.show()
+
+# --- Main loop
+while True:
+    cloudcover = get_cloudcover()
+    level = solar_output(cloudcover)
+    print(f"Cloud cover {cloudcover}% -> solar output {int(level * 100)}%")
+
+    show_output(level)
+
+    time.sleep(120)
+```
+
+### Take it further
+
+- Use the forecast values to show whether output is about to rise or fall
+- Compare two locations and light one strip per city
+- Add the [OLED Screen](../components/oled-screen/oled-screen.html) to display more granular information
 
 ---
 
-### Need help?
+## Idea 2: A Wind Turbine For Your Desk
 
+{: .highlight }
+This one is a challenge, not a walkthrough.
 
-There are several ways for you to get some help with your prototypes:
+We've shown solar energy as a light indicator, now let's show wind energy as movement. The [Mini Fan](../components/mini-fan/mini-fan.html) becomes a turbine that spins at the speed of the wind measured outside.
 
-1. We have trained a custom AI-Agent for you that will help you with any questions. This is especially helpful regarding your python-code:
+**What you need to work out:**
 
-    [DTI Workshop Helper](https://www.perplexity.ai/search/dti-workshop-helper-T0eH2gNyRM2elfBJcprRJw){: .btn}
+1. **Ask for wind data.** Add `windspeed_10m` to the `hourly=` list in the request URL. Reading the value back works exactly like `cloudcover` does above.
 
-2. For references on using specific components, jump to the Components section: 
+2. **Map wind speed to fan speed.** The API returns kilometres per hour, usually somewhere between 0 and 40. The `pwmio` module wants a duty cycle between `0` and `65535`. You need a rule that converts one into the other.
 
-    [Component Overview](../components/){: .btn}
+3. **Calibrate your behavior.** A DC motor will not start turning at a very low duty cycle, it will just sit there and buzz. Find the lowest value that reliably gets your fan spinning and treat that as your starting point.
 
-3. Your workshop instructors are of course happy to help. Don't worry: Go ahead and ask your question.
+**Questions worth answering while you build:**
 
+- Should a calm day mean a stopped fan, or one that moves slowly?
+- What happens above 40 km/h? Program a maximum speed cap or let it run at maximum and see what happens?
+- Can you think of a clever way to indicate wind *direction* using `winddirection_10m`?
+
+{: .note }
+Wind and sun complement each other. It is often windiest when it is cloudiest. Combine both scenarios and you have a small model of why energy grids rely on a mix of renewable sources.
+
+---
+
+[Back to Overview](./){: .btn }

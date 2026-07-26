@@ -2,63 +2,28 @@
 layout: default
 title: "Reaction Game"
 parent: "Inspiration"
-nav_order: 2
+nav_order: 1
 redirect_from:
   - "/part 2 get creative/idea-2.html"
+  - "/part 1 tutorials/bonus/"
+  - "/tutorials/bonus/"
 ---
 
-# Idea 2 - Reaction Game
+# Reaction Game
 
-This is a simple but exciting two-player reaction game. It lets you practice coding basic logic, working with input and output hardware, and competing with a friend—all with minimal setup.
-
-For inspiration, PenguinTutor has built an [advanced 4-player version](https://www.youtube.com/shorts/2sUVWSIK9SU).
+This beginner-friendly uses two [tactile switches](../components/tactile-switch/tactile-switch.html) and an [RGB LED strip](../components/led-components/led-components.html) to create a simple but fun two-player reaction game. It allows you to gain practical experience with basic programming logic, as well as using input and output components.
 
 
+## Basic Logic & Setup
 
-## What does the Reaction Game do?
-
-This project is a beginner-friendly two-player reaction game using tactile buttons and an RGB LED strip (NeoPixel).  
-The game starts automatically when powered up. After a random short delay, the LED lights up white, and both players try to press their button as quickly as possible. The first to press wins the round—the LED flashes red or blue to show the winner. After a short pause, the game restarts.
-
----
-
-
-
-## Components for the Base Game
-
-- Microcontroller board (Raspberry Pi Pico)
-- 2 × Buttons (digital input)
-- 1 × RGB (NeoPixel) LED (as output)
-- Connection cables
-
----
-
-## Other Components You May Use Later
-
-You can expand and personalize your game with:
-- More LEDs (for visual feedback, winner indication)
-- Additional buttons (to support more players)
-- Display (OLED) (to show winner, reaction times, highscore, etc.)
-- Buzzer or speaker (for sound effects)
-
-Check the [Components](../components/) page for what’s available.
-
----
-
-## Basic Setup
-
-1. **Connect the red button** to GPIO pin GP1.
-2. **Connect the blue button** to GPIO pin GP5.
+1. **Connect a button** to GPIO pin GP1 for the red player.
+2. **Connect a button** to GPIO pin GP5 for the blue player.
 3. **Connect the NeoPixel LED strip** (or compatible RGB LED) to GPIO pin GP9.
 4. **Plug in your microcontroller** (e.g. Raspberry Pi Pico) and connect it to your PC.
-5. Optionally: add extra modules (buzzer, display, more LEDs) for your own ideas.
 
 ![Reaction Game Setup](./assets/reactiongame_1.png)
 
-{:.note}
-In the picture above one button and one touch sensor were used as Inputs. Both work fine, but for fairness reasons it should be the same sensor for both players.
-
----
+The game starts automatically when powered up. After a short, randomized delay, the LED lights up white, signalling to both players to press their button as quickly as possible. The first player to press wins the round. The LED flashes in the color of the respective player to indicate the winner of the round. After a short pause, a new round begins.
 
 ## Code
 
@@ -167,41 +132,22 @@ while True:
 The original inspiration of this reaction game code can be found [here](https://id-studiolab.github.io/Digital-Interfaces/assignments/01-reaction-game-discover/).
 
 
----
+
+## Suggestions & Variations
+
+If you got the basic game running and are looking for a challenge, here are some ideas on how to take it further:
 
 
-## Ideas for Extensions & Variations
-
-
-- Show winner with extra LEDs or on a display
-- Add sound effects (buzzer or speaker) when someone wins
-- Replace buttons with touch sensors, light sensors, or other inputs
+- Display winner on a separate LED or on a display
+- Add sound effects ([buzzer](../components/piezo-buzzer/piezo-buzzer.html) or [speaker](../components/audio-amp-speaker/audio-amp-speaker.html))
+- Replace buttons with other types of sensors and define new interactions that work with those
 - Make it multiplayer by adding more buttons and LED colors
-- Display winning reaction time or keep a high score
-- Make color challenges or penalties for pressing at the wrong time
-- Change the rules to a new game: e.g. play "Click Race"—see who clicks their button most in 10 seconds
+- Display reaction time or keep a high score
+- Add new rules and behaviours to the game
 
-
----
-
-**Start by getting the basic game running, then pick and implement one or more of the extensions above, or invent your own twist!**
-
-
+{:.note}
+PenguinTutor developed an [advanced 4-player version](https://www.youtube.com/shorts/2sUVWSIK9SU) you could explore!
 
 ---
 
-### Need help?
-
-
-There are several ways for you to get some help with your prototypes:
-
-1. We have trained a custom AI-Agent for you that will help you with any questions. This is especially helpful regarding your python-code:
-
-    [DTI Workshop Helper](https://www.perplexity.ai/search/dti-workshop-helper-T0eH2gNyRM2elfBJcprRJw){: .btn}
-
-2. For references on using specific components, jump to the Components section: 
-
-    [Component Overview](../components/){: .btn}
-
-3. Your workshop instructors are of course happy to help. Don't worry: Go ahead and ask your question.
-
+[Back to Overview](./){: .btn }
