@@ -3,7 +3,6 @@ layout: default
 title: "Photoresistor"
 parent: "Components"
 nav_order: 5
-has_children: false
 ---
 
 <img src="assets/custom-photo-resistor-centered.png" alt="Custom Photo Resistor" width="250"/>

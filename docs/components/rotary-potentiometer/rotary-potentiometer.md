@@ -3,7 +3,6 @@ layout: default
 title: "Rotary potentiometer"
 parent: "Components"
 nav_order: 3
-has_children: false
 ---
 
 <img src="assets/custom-rotation-pot-centered.png" alt="Custom Rotation Potentiometer" width="250"/>

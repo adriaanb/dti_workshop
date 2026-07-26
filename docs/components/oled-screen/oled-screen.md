@@ -3,7 +3,6 @@ layout: default
 title: "OLED Screen"
 parent: "Components"
 nav_order: 11
-has_children: false
 ---
 
 <img src="assets/oled-screen.png" alt="OLED Screen" width="250"/>

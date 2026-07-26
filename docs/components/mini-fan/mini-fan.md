@@ -3,7 +3,6 @@ layout: default
 title: "DC Motor & Fan"
 parent: "Components"
 nav_order: 13
-has_children: false
 ---
 
 <img src="assets/dc-motor-fan.png" alt="Grove Mini Fan" width="500"/>

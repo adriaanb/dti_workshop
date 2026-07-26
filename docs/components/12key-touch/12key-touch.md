@@ -3,7 +3,6 @@ layout: default
 title: "Capacitive Touch (12 Key)"
 parent: "Components"
 nav_order: 16
-has_children: false
 ---
 
 <img src="assets/12key-touch.png" alt="MPR121 Touch Sensor" width="500"/>

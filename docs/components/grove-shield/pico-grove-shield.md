@@ -3,7 +3,6 @@ layout: default
 title: "Grove Shield"
 parent: "Components"
 nav_order: 1
-has_children: false
 ---
 
 <img src="assets/pico-grove-shield.png" alt="Grove Shield" width="400"/>

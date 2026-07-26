@@ -3,7 +3,6 @@ layout: default
 title: "Tilt switch"
 parent: "Components"
 nav_order: 6
-has_children: false
 ---
 
 <img src="assets/custom-tilt-switch-centered.png" alt="Custom Tilt Switch" width="250"/>

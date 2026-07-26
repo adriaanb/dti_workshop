@@ -3,7 +3,6 @@ layout: default
 title: "Thermistor"
 parent: "Components"
 nav_order: 4
-has_children: false
 ---
 
 <img src="assets/custom-temperature-sensor-centered.png" alt="Custom Temperature Sensor" width="250"/>

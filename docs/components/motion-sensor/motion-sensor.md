@@ -3,7 +3,6 @@ layout: default
 title: "Motion Sensor"
 parent: "Components"
 nav_order: 14
-has_children: false
 ---
 
 <img src="assets/grove-pir.png" alt="Grove Motion Sensor" width="250"/>

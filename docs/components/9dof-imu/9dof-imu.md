@@ -3,7 +3,6 @@ layout: default
 title: "9DoF IMU"
 parent: "Components"
 nav_order: 17
-has_children: false
 ---
 
 <img src="assets/9dof-imu-w-cable.png" alt="9DoF IMU" width="250"/>

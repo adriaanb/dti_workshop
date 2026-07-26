@@ -3,7 +3,8 @@ layout: default
 title: "RGB LED Strip"
 parent: "Components"
 nav_order: 7
-has_children: false
+redirect_from:
+  - "/components/neopixel-strip/neopixel-strip.html"
 ---
 
 <img src="assets/led-components.png" alt="LED Components" width="500"/>

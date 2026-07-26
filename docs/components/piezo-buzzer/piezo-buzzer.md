@@ -3,7 +3,6 @@ layout: default
 title: "Piezo Buzzer"
 parent: "Components"
 nav_order: 8
-has_children: false
 ---
 
 <img src="assets/piezo-buzzer-passive.png" alt="Piezo Buzzer" width="500"/>

@@ -3,7 +3,6 @@ layout: default
 title: "Time of Flight Sensor"
 parent: "Components"
 nav_order: 15
-has_children: false
 ---
 
 <img src="assets/ToF_v1_VL53L0X.png" alt="Time of Flight Sensor Version 1"  width="250"/>

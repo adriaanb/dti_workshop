@@ -3,7 +3,6 @@ layout: default
 title: "Mono Speaker"
 parent: "Components"
 nav_order: 10
-has_children: false
 
 ---
 

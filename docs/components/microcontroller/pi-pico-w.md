@@ -3,7 +3,6 @@ layout: default
 title: "Pi Pico W"
 parent: "Components"
 nav_order: 0
-has_children: false
 ---
 
 <img src="assets/pi-pico-w.png" alt="Raspberry Pi Pico" width="400"/>

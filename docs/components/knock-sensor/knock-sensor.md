@@ -3,7 +3,6 @@ layout: default
 title: "Knock Sensor"
 parent: "Components"
 nav_order: 9
-has_children: false
 
 ---
 

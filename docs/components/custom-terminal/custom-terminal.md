@@ -3,7 +3,6 @@ layout: default
 title: "Custom Screw Terminal"
 parent: "Components"
 nav_order: 18
-has_children: false
 ---
 
 <img src="assets/custom-terminal.png" alt="Custom Terminal" width="250"/>

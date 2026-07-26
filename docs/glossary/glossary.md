@@ -3,7 +3,6 @@
 layout: default
 title: Glossary
 nav_order: 6
-has_children: false
 has_toc: false
 
 ---
@@ -37,7 +36,7 @@ has_toc: false
 |        `Object`         | An **object** is an entity created from a class, much like a car built using a specific blueprint. It holds unique attributes and performs actions, termed methods, defined by its class (see above). This allows for the creation of varied objects, each with unique data, but all adhering to behaviors and characteristics defined by their class. |
 |       `Instance`        | An **instance** is like a single product produced from a factory assembly line. The factory is the class and the product is the object. To create an object instance, for example, "Frank's Car", we would use the `Car` class and specify both the model and color. This might look like `franks_car = Car("Hyundai", "Blue")`. This statement creates a new instance of the `Car` class named `franks_car`, representing a blue Hyundai. |
 |        `Method`         | A **method** is a function attached to an object. It defines the actions that the object can perform and can modify the object's state, much like real-world objects can perform actions based on their design. For instance, in the context of the `Car` class, a method might be named `openWindow()`. When this method is invoked on a car object, such as with `franks_car.openWindow()`, it would perform the action of opening the car's window, as defined in the class. |
-|   `Library`, `Module`   | **Libraries** and **modules** contain code written by other people to fulfill specific tasks. Core modules, such as `board`, `digitalio`, and `time` provide functionality essential to working with your board. Therefore, they are already included in CircuitPython. In some cases, you may need to download additional libraries to add functionality, such as drivers for specific sensors, to your code. You can learn more about that subject by reading the chapter on CircuitPython Libraries in [Adafruit's guide](learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries). |
+|   `Library`, `Module`   | **Libraries** and **modules** contain code written by other people to fulfill specific tasks. Core modules, such as `board`, `digitalio`, and `time` provide functionality essential to working with your board. Therefore, they are already included in CircuitPython. In some cases, you may need to download additional libraries to add functionality, such as drivers for specific sensors, to your code. You can learn more about that subject by reading the chapter on CircuitPython Libraries in [Adafruit's guide](https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries). |
 |          `API`          | Application Programming Interfaces (**API**s) define how different programs communicate, establishing fixed rules for their interactions. Think of an API as a restaurant menu: it details how one program can request specific actions or data from another, enabling different programs to interact and share capabilities or information. |
 | `MAC Address` | A **MAC address** (Media Access Control address) is a unique hardware address used to identify devices on a network. |
 

@@ -3,7 +3,6 @@ layout: default
 title: "Tactile switch"
 parent: "Components"
 nav_order: 2
-has_children: false
 ---
 
 <img src="assets/custom-tactile-switch-centered.png" alt="Custom Tactile Switch" width="250"/>
