@@ -110,3 +110,6 @@ Before beginning, ensure your `code.py` file is open in **Mu Editor** and contai
    
        time.sleep(5)
    ```
+
+{: .note }
+For a more advanced example of working with an API, have a look at [Energy Production](../../inspiration/energy-production.html) in the Inspiration section.

@@ -7,7 +7,7 @@ redirect_from:
   - "/part 1 tutorials/"
 ---
 
-# Part 1: Tutorials 
+# Tutorials 
 
 These short tutorials should set you up with the basic knowledge needed for developing your own concepts during this workshop.
 

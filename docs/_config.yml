@@ -25,13 +25,6 @@ callouts:
     title: Warning
     color: red
 
-# External navigation links
-nav_external_links:
-  - title: AI Workshop Assistant
-    url: https://www.perplexity.ai/search/dti-workshop-helper-T0eH2gNyRM2elfBJcprRJw
-    hide_icon: false          # show the external link icon
-    opens_in_new_tab: true
-
 plugins:
   - jekyll-redirect-from
 

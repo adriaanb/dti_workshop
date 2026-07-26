@@ -2,12 +2,12 @@
 layout: default
 title: "Alarm System"
 parent: "Inspiration"
-nav_order: 1
+nav_order: 2
 redirect_from:
   - "/part 2 get creative/idea-1.html"
 ---
 
-# Idea 1 – Alarm System
+# Alarm System
 
 This project guides you through building a simple alarm system. You'll learn to use sensors to detect motion or other changes in the environment and trigger an audio alert — an intro to automated, interactive devices!
 
@@ -160,20 +160,6 @@ while True:
 
 **Start by building the basic alarm, then add features to meet your own needs or to solve new problems!**
 
-
 ---
 
-### Need help?
-
-There are several ways for you to get some help with your prototypes:
-
-1. We have trained a custom AI-Agent for you that will help you with any questions. This is especially helpful reagarding your python-code:
-
-    [DTI Workshop Helper](https://www.perplexity.ai/search/dti-workshop-helper-T0eH2gNyRM2elfBJcprRJw){: .btn}
-
-2. For references on using specific components, jump to the Components section: 
-
-    [Component Overview](../components/){: .btn}
-
-3. Your workshop instructors are of course happy to help. Don't worry: Go ahead and ask your question.
-
+[Back to Overview](./){: .btn }

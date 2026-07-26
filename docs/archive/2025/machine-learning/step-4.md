@@ -46,10 +46,7 @@ Using the [Web Serial API](https://developer.chrome.com/docs/capabilities/serial
 - **Still not working?**  
   - Reload the web app; unplug and replug the Pico and try again.
 
-**Need more help?**
-
-- 💡 Use the [DTI Workshop Helper AI Tutor](https://chatgpt.com/g/g-6890968826808191b1bccc15d0e6a983-dti-workshop-helper) for instant troubleshooting.  
-- 🧑‍🔧 Ask your workshop instructors — they’re ready to help in person!
+If you are stuck, ask your workshop instructors.
 
 ---
 

@@ -7,7 +7,7 @@ has_toc: false
 redirect_from:
   - "/part 3 tiny sorter/"
 ---
-# Part 3: Machine Learning meets Microcontrollers -  "Tiny Sorter"
+# Machine Learning Introduction: "Tiny Sorter"
 
 <div>
   <video autoplay muted loop playsinline style="max-width: 100%; height: auto;">

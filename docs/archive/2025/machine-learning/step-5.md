@@ -49,19 +49,3 @@ Build, extend, remix—make it truly yours, and have fun exploring creative hard
 
 {:.highlight}
 In this build, I integrated buttons to start and stop the sorting process, as well as a dedicated button to reset the counters. Additionally, a display was added to show the live count for each class directly on the screen.
-
----
-
-## 💡 Need Support? Use the DTI Workshop Helper!
-
-Programming microcontrollers with new features can be challenging, especially under time pressure.  
-**Don’t struggle alone!** Use the [DTI Workshop Helper AI Tutor](https://www.perplexity.ai/search/dti-workshop-helper-T0eH2gNyRM2elfBJcprRJw) for:
-
-- Inspiration: See what’s possible and brainstorm new features.
-- Coding assistance: Get help writing or fixing CircuitPython/Arduino code.
-- Troubleshooting: Solve errors, pinouts, or logic issues—fast!
-
-Or, as always, just ask our workshop instructors for real-world help on the spot.
-
----
-
