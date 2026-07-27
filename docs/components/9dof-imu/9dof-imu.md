@@ -36,7 +36,7 @@ To use the ICM-20948 in CircuitPython, the following [libraries](../../glossary/
 - `adafruit_register` (helper library for low-level I²C register access)
 
 {: .highlight }
-Make sure both libraries are present inside the `/lib` folder on your `CIRCUITPY` drive. If not, download Adafruit’s Library Bundle for Version 9.x [here](https://circuitpython.org/libraries), extract the needed files, and copy them into `/lib`.
+Make sure both libraries are present inside the `/lib` folder on your `CIRCUITPY` drive. If not, download Adafruit’s Library Bundle for Version 10.x [here](https://circuitpython.org/libraries), extract the needed files, and copy them into `/lib`.
 
 ## Basic Usage
 

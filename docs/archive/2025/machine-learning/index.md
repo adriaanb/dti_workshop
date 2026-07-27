@@ -9,6 +9,9 @@ redirect_from:
 ---
 # Machine Learning Introduction: "Tiny Sorter"
 
+{: .note }
+This module was part of the 2025 edition and is no longer taught. Its code examples were written for **CircuitPython 9**.
+
 <div>
   <video autoplay muted loop playsinline style="max-width: 100%; height: auto;">
     <source src="./assets/video0.mp4" type="video/mp4">

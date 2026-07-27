@@ -23,7 +23,7 @@ The [Grove 0.66” OLED module](https://wiki.seeedstudio.com/Grove-OLED-Display-
 To use the Grove OLED in your code, the `adafruit_displayio_ssd1306` and `adafruit_display_text` [libraries](../../glossary/glossary) are needed.
 
 {: .highlight }
-You can verify that the libraries are installed by ensuring a file called `adafruit_displayio_ssd1306.mpy` and a folder called `adafruit_display_text` are present in the `/lib` folder of your `CIRCUITPY` drive. If not, download Adafruit’s Library Bundle for Version 9.x [here](https://circuitpython.org/libraries). Extract the needed files from the bundle and place them in the `/lib` folder on your microcontroller. You can learn more about libraries and their use in the [Glossary](../../glossary/glossary) or the [Tutorials](../../tutorials).
+You can verify that the libraries are installed by ensuring a file called `adafruit_displayio_ssd1306.mpy` and a folder called `adafruit_display_text` are present in the `/lib` folder of your `CIRCUITPY` drive. If not, download Adafruit’s Library Bundle for Version 10.x [here](https://circuitpython.org/libraries). Extract the needed files from the bundle and place them in the `/lib` folder on your microcontroller. You can learn more about libraries and their use in the [Glossary](../../glossary/glossary) or the [Tutorials](../../tutorials).
 
 The examples below assume your module is connected to the Grove I²C header on **GP9/GP8** (SCL/SDA). Alternatively, you can use the second I²C port on **GP7/GP6**.
 
@@ -75,7 +75,7 @@ while True:
 ```
 
 {: .note }
-If you want to explore **different fonts**, you will also need to include the `adafruit_bitmap_font` library. This one is not included with your microcontroller and will need to be extracted from the [Library Bundle](https://circuitpython.org/libraries) for your CircuitPython version (9.x). See Adafruit’s [displayio guide](https://learn.adafruit.com/circuitpython-display-support-using-displayio/introduction) for details on working with fonts, bitmaps, and more advanced graphics.
+If you want to explore **different fonts**, you will also need to include the `adafruit_bitmap_font` library. This one is not included with your microcontroller and will need to be extracted from the [Library Bundle](https://circuitpython.org/libraries) for your CircuitPython version (10.x). See Adafruit’s [displayio guide](https://learn.adafruit.com/circuitpython-display-support-using-displayio/introduction) for details on working with fonts, bitmaps, and more advanced graphics.
 
 ## Additional Resources
 

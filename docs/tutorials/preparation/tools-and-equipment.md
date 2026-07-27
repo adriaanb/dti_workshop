@@ -21,6 +21,9 @@ You could, in theory, use any text editor to write programs for your microcontro
 
 [Install Mu Editor](installing-mu-editor){: .btn .btn-blue }
 
+{: .note }
+Mu Editor is archived and no longer receives updates. Until Adafruit recommends a successor, it remains the default choice for this workshop: it is stable, beginner-friendly, and the best documented option for CircuitPython.
+
 
 
 ![Overview of our essencial elements](assets/overview.png)

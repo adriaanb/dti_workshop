@@ -25,7 +25,7 @@ This Distance Sensor communicates with your microcontroller using a protocol cal
 These libraries should already be installed on the ItsyBitsy Microcontroller included in your kit, so you don't need to worry about installing them yourself.
 
 {: .highlight }
-You can verify that these libraries are installed by ensuring a folder named `adafruit_bus_device` and a file called `adafruit_vl53l0x.mpy` are present in the `lib` folder of your `CIRCUITPY` drive. If not, download Adafruit's Library Bundle for Version 9.x [here](https://circuitpython.org/libraries). Extract the needed file and folder from the bundle and place them in the `lib` folder on your microcontroller. You can learn more about libraries and their use in the [Glossary](../../glossary/glossary) or the [Tutorials](../../tutorials).
+You can verify that these libraries are installed by ensuring a folder named `adafruit_bus_device` and a file called `adafruit_vl53l0x.mpy` are present in the `lib` folder of your `CIRCUITPY` drive. If not, download Adafruit's Library Bundle for Version 10.x [here](https://circuitpython.org/libraries). Extract the needed file and folder from the bundle and place them in the `lib` folder on your microcontroller. You can learn more about libraries and their use in the [Glossary](../../glossary/glossary) or the [Tutorials](../../tutorials).
 
 ## Basic Usage
 

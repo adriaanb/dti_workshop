@@ -14,7 +14,7 @@ This website will accompany you throughout the workshop and beyond. It serves as
 The Raspberry Pi Pico W Microcontroller you received during the workshop already runs CircuitPython, so you can just connect it to your computer and start exploring. If you are using your own Pi Pico Microcontroller, you first need to install CircuitPython on it.  
 
 {: .highlight }
-Code examples provided on this page are written for **Pi Pico W** running **CircuitPython 9**.
+Code examples provided on this page are written for **Pi Pico W** running **CircuitPython 10**.
 
 
 ---

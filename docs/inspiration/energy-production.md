@@ -6,7 +6,6 @@ nav_order: 4
 redirect_from:
   - "/part 2 get creative/idea-4.html"
   - "/part 1 tutorials/connecting-to-the-internet/part-4.html"
-  - "/tutorials/connecting-to-the-internet/part-4.html"
 ---
 
 # Energy Production

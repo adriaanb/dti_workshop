@@ -15,7 +15,7 @@ Changes its electrical resistance with temperature. Can be used to estimate the 
 ---
 
 ## Basic Usage
-Relies on the `adafruit_thermistor` library. If it is not already included in your `lib` folder, it is available for download with the [9.x bundle](https://circuitpython.org/libraries).
+Relies on the `adafruit_thermistor` library. If it is not already included in your `lib` folder, it is available for download with the [10.x bundle](https://circuitpython.org/libraries).
 ```python
 # --- Imports
 import time

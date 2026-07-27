@@ -2,6 +2,7 @@
 layout: default
 title: "Part 1 - Scan for Available Networks"
 parent: "Connecting To The Internet"
+nav_order: 1
 redirect_from:
   - "/part 1 tutorials/connecting-to-the-internet/part-1.html"
 ---

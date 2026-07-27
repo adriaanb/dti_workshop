@@ -2,6 +2,7 @@
 layout: default
 title: "Part 2 - Connect to a WiFi Network"
 parent: "Connecting To The Internet"
+nav_order: 2
 redirect_from:
   - "/part 1 tutorials/connecting-to-the-internet/part-2.html"
 ---
