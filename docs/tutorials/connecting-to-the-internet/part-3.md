@@ -9,9 +9,6 @@ redirect_from:
 
 # Part 3 - Get Data from the Internet
 
-{: .highlight}
-You can find a more advanced example of working with an API under [Energy Production](../../inspiration/energy-production.html) in the Inspiration section.
-
 So far, this tutorial has taught you how to configure and connect your Pi Pico W to a WiFi network with internet connectivity. Now, you will learn how to receive data (in this case, random facts about cats) over the internet using an [API](../../glossary/glossary). The code example below uses a so-called `REST API`, a common way to exchange data over the internet.
 
 {:.highlight-yellow}
@@ -99,3 +96,6 @@ Before beginning, ensure your `code.py` file is open in **Mu Editor** and contai
    ```
 
 [Next Step](part-4){: .btn .btn-blue }
+
+{: .note}
+You can find a more advanced example of working with an API under [Energy Production](../../inspiration/energy-production.html) in the Inspiration section.
