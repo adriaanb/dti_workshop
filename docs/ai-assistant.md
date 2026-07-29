@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "AI Assistant"
-nav_order: 6
+nav_order: 5
 ---
 
 # AI Assistant
@@ -16,9 +16,9 @@ While this works best with access to a paid subscription, having one is not nece
 The buttons below open a new chat with the instruction already filled in. Send it, then ask your question in the next message.
 
 <p>
-<a id="open-claude" class="btn btn-blue" href="https://claude.ai/new" target="_blank" rel="noopener">Open in Claude</a>
+<a id="open-claude" class="btn" style="background-color:#a8452a;background-image:none;color:#fff" href="https://claude.ai/new" target="_blank" rel="noopener">Open in Claude</a>
 &nbsp;
-<a id="open-chatgpt" class="btn" href="https://chatgpt.com/" target="_blank" rel="noopener">Open in ChatGPT</a>
+<a id="open-chatgpt" class="btn" style="background-color:#000;background-image:none;color:#fff" href="https://chatgpt.com/" target="_blank" rel="noopener">Open in ChatGPT</a>
 </p>
 
 {: .note }
