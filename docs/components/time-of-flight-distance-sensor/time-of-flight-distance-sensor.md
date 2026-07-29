@@ -20,12 +20,12 @@ Additional code examples are available [here](https://github.com/adafruit/Adafru
 
 ## Preparation
 
-This Distance Sensor communicates with your microcontroller using a protocol called [I²C](../../glossary/glossary). To work, it must be connected to a port labeled **I²C** on the BitsyExpander Board. You will need to include the `adafruit_bus_device` [library](../../glossary/glossary) in your code to read data via I²C and the `adafruit_vl53l0x` library to control the [VL53L0X](https://www.adafruit.com/product/3317) sensor itself.
+This Distance Sensor communicates with your microcontroller using a protocol called [I²C](../../glossary/glossary). To work, it must be connected to a port labeled **I²C** on the BitsyExpander Board. You will need the `adafruit_vl53l0x` [library](../../glossary/glossary) to control the [VL53L0X](https://www.adafruit.com/product/3317) sensor.
 
 These libraries should already be installed on the ItsyBitsy Microcontroller included in your kit, so you don't need to worry about installing them yourself.
 
 {: .highlight }
-You can verify that these libraries are installed by ensuring a folder named `adafruit_bus_device` and a file called `adafruit_vl53l0x.mpy` are present in the `lib` folder of your `CIRCUITPY` drive. If not, download Adafruit's Library Bundle for Version 10.x [here](https://circuitpython.org/libraries). Extract the needed file and folder from the bundle and place them in the `lib` folder on your microcontroller. You can learn more about libraries and their use in the [Glossary](../../glossary/glossary) or the [Tutorials](../../tutorials).
+You can verify that this library is installed by ensuring a file called `adafruit_vl53l0x.mpy` is present in the `lib` folder of your `CIRCUITPY` drive. If not, download Adafruit's Library Bundle for Version 10.x [here](https://circuitpython.org/libraries). Extract the needed file and folder from the bundle and place them in the `lib` folder on your microcontroller. You can learn more about libraries and their use in the [Glossary](../../glossary/glossary) or the [Tutorials](../../tutorials).
 
 ## Basic Usage
 
