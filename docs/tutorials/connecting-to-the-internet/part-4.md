@@ -1,74 +1,92 @@
 ---
 layout: default
-title: "Part 4 - Trigger AR Interactions"
+title: "Part 4 - Send Data to the Internet"
 parent: "Connecting To The Internet"
 nav_order: 4
 ---
 
-# Part 4 - Trigger AR Interactions
+# Part 4 - Send Data to the Internet
+
+So far you have used an [API](../../glossary/glossary) to *get* data over the internet onto your Pico. In this part, you turn it around. Your Pi Pico will use a different API to send data *out*. In this example, you will change the color of a virtual object within an Extended Reality (XR) environment using input coming from the physical world.
+
+{:.note}
+The XR side runs on [XRwise Creator](https://creator.xrwise.tech/), which you will learn more about in the next workshop. It offers the possibility to use external data sources via a `REST API` to influence objects within a virtual scene. Your Pi Pico becomes such a **source** by sending so-called `POST` requests that trigger an **effect** inside the virtual scene.
+
+## Set Up the Interaction
+
+In this example, we connect a [tactile switch](../../components/tactile-switch/tactile-switch.html) to **GP16**. The code below expects you to provide the **POST URL** and **Room ID** from **XRwise Creator** (ask the instructors if you are uncertain about where to find these), which you will define using the `SIGNAL_URL` and `ROOM_ID` variables respectively.
+
+The code here also allows you to set a hexadecimal color value (`#ff0000` for red, for example), which will be posted to the API whenever you push the button. If the "Change Color" effect is configured in the creator's block coding module, you will then see the color of the linked object change inside the virtual environment.
 
 {: .highlight-yellow }
-This page is a draft. The AR integration is still being set up and the details below will change before the workshop.
+XRwise is still under active development and may exhibit unexpected behavior. In this tutorial, we set the color of a primitive object (cube, sphere, cylinder, cone, and so on), which works reliably. Feel free to explore the other effects, but be aware that results may vary at this time.
 
-So far you have used the internet to *get* data onto your Pico. In this part, you turn it around: your Pico uses an API to send data out, in this case *to* an Augmented Reality (AR) stage you will explore more in the following days, and something happens in the shared AR scene.
+```python
+# --- Imports
+import time
+import board
+import digitalio
+import wifi
+import socketpool
+import ssl
+import adafruit_requests
 
-The AR side runs on [xrwise](https://creator.xrwise.tech/). There, you will find a **Room ID** and an **Interaction ID**, **(TODO)**. Using these, your microcontroller can trigger changes by using these values to send a so-called `POST` request.
+# Get WiFi details from your secrets.py file
+from secrets import secrets
 
-1. **TODO** (Find relevant Room ID and Interaction ID).
+# --- Variables
+# Paste the POST URL and Room ID from the Creator
+SIGNAL_URL = "paste-the-post-url-here"
+ROOM_ID = "paste-your-room-id-here"
+INTERACTION_ID = 1
 
-2. Connect a [tactile switch](../../components/tactile-switch/tactile-switch.html) to GPIO pin **GP1**.
+# The color that gets sent, as a hex value
+COLOR = "#ff0000"
 
-3. Copy the code below into your `code.py`, then fill in the `ACCESS-KEY` in the URL along with your own `ROOM_ID` and `INTERACTION_ID`. 
+button = digitalio.DigitalInOut(board.GP16)
+button.direction = digitalio.Direction.INPUT
 
-   ```python
-   # --- Imports
-   import time
-   import board
-   import digitalio
-   import wifi
-   import socketpool
-   import ssl
-   import adafruit_requests
+was_pressed = False
 
-   # Get WiFi details from your secrets.py file
-   from secrets import secrets
+# --- Setup
 
-   # --- Variables
-   SIGNAL_URL = "https://nakama.xrwise.tech:7350/v2/rpc/signal_match?http_key=ACCESS-KEY&unwrap="
-   ROOM_ID = "paste-your-room-id-here"
-   INTERACTION_ID = 1
+# Connect to WiFi using credentials from the secrets file
+wifi.radio.connect(secrets["ssid"], secrets["password"])
 
-   button = digitalio.DigitalInOut(board.GP1)
-   button.direction = digitalio.Direction.INPUT
+# Set up socket pool and requests
+pool = socketpool.SocketPool(wifi.radio)
+requests = adafruit_requests.Session(pool, ssl.create_default_context())
 
-   last_state = False
+# --- Functions
+def send_value(value):
+    body = {
+        "interactionId": INTERACTION_ID,
+        "roomId": ROOM_ID,
+        "payload": str(value),
+    }
+    response = requests.post(SIGNAL_URL, json=body)
+    print("Sent", value, "- server replied", response.status_code)
+    response.close()
 
-   # --- Setup
-   wifi.radio.connect(secrets["ssid"], secrets["password"])
+# --- Main loop
+while True:
+    # Only act on the moment the button goes down, not while it is held
+    if button.value and not was_pressed:
+        send_value(COLOR)
 
-   pool = socketpool.SocketPool(wifi.radio)
-   requests = adafruit_requests.Session(pool, ssl.create_default_context())
+    was_pressed = button.value
+    time.sleep(0.05)
+```
 
-   # --- Functions
-   def send_signal(interaction_id, payload=None):
-       body = {"interactionId": interaction_id, "roomId": ROOM_ID}
-       if payload is not None:
-           body["payload"] = str(payload)
-       response = requests.post(SIGNAL_URL, json=body)
-       print("Signal sent:", response.status_code)
-       response.close()
+Save the file and press the button. The serial monitor prints every value it sends, and the object should change color.
 
-   # --- Main loop
-   while True:
-       pressed = button.value
-       if pressed and not last_state:
-           print("Button pressed, triggering interaction")
-           send_signal(INTERACTION_ID)
-       last_state = pressed
-       time.sleep(0.05)
-   ```
+{: .highlight }
+The `was_pressed` variable works just like `last_state` in the [tactile switch](../../components/tactile-switch/tactile-switch.html) example: it remembers whether the button was already down on the previous run through the loop, so that one press sends exactly one signal. Without it, your Pico would send a request on every pass through the loop for as long as your finger rests on the button, which is dozens of requests per second.
 
-4. Save and press the button: the interaction fires in the AR scene.
+## Sending a trigger instead of a value
 
-{: .note }
-If your interaction has **value mode** enabled, it expects a value with every signal, e.g.,`send_signal(INTERACTION_ID, payload=123)`.
+Some interactions do not need a value at all. If you set the Source to **serves a trigger** inside XRwise Creator, it fires as soon as it receives anything. The effect it produces is fully defined inside the Creator instead of coming from the payload of your POST request:
+
+```python
+body = {"interactionId": INTERACTION_ID, "roomId": ROOM_ID}
+```
